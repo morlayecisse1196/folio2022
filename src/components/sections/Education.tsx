@@ -1,9 +1,14 @@
 import React from 'react';
 import { GraduationCap } from 'lucide-react';
-import { education } from '@/data';
+import { motion } from 'framer-motion';
+import { Education as EducationType } from '@/types';
 import { cn } from '@/lib/utils';
 
-const EducationSection = () => {
+interface EducationProps {
+  items: EducationType[];
+}
+
+const EducationSection: React.FC<EducationProps> = ({ items }) => {
   return (
     <section id="education" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
@@ -17,7 +22,7 @@ const EducationSection = () => {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
-          {education.map((edu, index) => (
+          {items.map((item, index) => (
             <div
               key={index}
               className={cn(
@@ -37,16 +42,16 @@ const EducationSection = () => {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                    {edu.degree}
+                    {item.degree}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-2">
-                    {edu.institution}
+                    {item.institution}
                   </p>
                   <p className="text-sm text-gray-500 dark:text-gray-500 mb-2">
-                    {edu.period}
+                    {item.period}
                   </p>
                   <p className="text-gray-600 dark:text-gray-400">
-                    {edu.description}
+                    {item.description}
                   </p>
                 </div>
               </div>

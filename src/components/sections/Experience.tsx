@@ -1,9 +1,14 @@
 import React from 'react';
 import { Briefcase } from 'lucide-react';
-import { experience } from '@/data';
+import { motion } from 'framer-motion';
+import { Experience as ExperienceType } from '@/types';
 import { cn } from '@/lib/utils';
 
-const ExperienceSection = () => {
+interface ExperienceProps {
+  items: ExperienceType[];
+}
+
+const ExperienceSection: React.FC<ExperienceProps> = ({ items }) => {
   return (
     <section id="experience" className="py-20 bg-white dark:bg-gray-800">
       <div className="container mx-auto px-4">
@@ -17,7 +22,7 @@ const ExperienceSection = () => {
         </div>
 
         <div className="grid gap-8">
-          {experience.map((exp, index) => (
+          {items.map((exp, index) => (
             <div
               key={index}
               className={cn(

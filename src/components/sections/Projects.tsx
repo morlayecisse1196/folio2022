@@ -1,10 +1,14 @@
 import React from 'react';
 import { Code2, ExternalLink, Github, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { projectList } from '@/data';
+import { Project } from '@/types';
 import { cn } from '@/lib/utils';
 
-const ProjectsSection = () => {
+interface ProjectsProps {
+  projects: Project[];
+}
+
+const ProjectsSection: React.FC<ProjectsProps> = ({ projects }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -51,7 +55,7 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
-          {projectList.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
